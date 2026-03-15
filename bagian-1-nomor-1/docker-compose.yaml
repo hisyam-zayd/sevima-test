@@ -1,0 +1,18 @@
+services:
+  db:
+    container_name: sevima_hisyam_db
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: sevima_user
+      POSTGRES_PASSWORD: sevima_password
+      POSTGRES_DB: poc_db
+    ports:
+      - "5432:5432"
+
+  app:
+    container_name: sevima_hisyam_app
+    build: .
+    volumes:
+      - .:/app
+    depends_on:
+      - db
