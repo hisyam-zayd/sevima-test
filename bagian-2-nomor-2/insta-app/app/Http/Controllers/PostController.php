@@ -71,6 +71,6 @@ class PostController extends Controller
             Storage::disk('public')->delete($post->image_path);
         }
         $post->delete();
-        return response()->json(['message' => 'post telah dihapus']);
+        return response()->json(null, 204);
     }
 }
