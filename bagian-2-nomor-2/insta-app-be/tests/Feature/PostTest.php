@@ -81,7 +81,7 @@ class PostTest extends TestCase
 
         $response = $this->actingAs($user)->deleteJson("/api/posts/{$post->id}");
 
-        $response->assertStatus(200);
+        $response->assertStatus(204);
         $this->assertDatabaseMissing('posts', ['id' => $post->id]);
     }
 }

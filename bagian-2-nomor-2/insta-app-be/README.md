@@ -2,6 +2,11 @@
 
 ## Insta App - Backend
 
+### Unit testing
+```bash
+php artisan test
+```
+
 ### Local dev
 ```bash
 cp .env.example .env
