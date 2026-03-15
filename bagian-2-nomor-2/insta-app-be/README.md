@@ -2,6 +2,11 @@
 
 ## Insta App - Backend
 
+- PHP 8.2
+- Laravel 11
+- Use build in SQLite
+- Docker supported
+
 ### Unit testing
 ```bash
 php artisan test
