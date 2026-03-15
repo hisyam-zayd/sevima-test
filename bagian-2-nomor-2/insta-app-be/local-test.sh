@@ -4,7 +4,7 @@
 # InstaApp API Test Script
 # ============================================
 
-BASE_URL="http://localhost:8080/api"
+BASE_URL="http://localhost:8000/api"
 TOKEN=""
 USER_ID=""
 POST_ID=""
