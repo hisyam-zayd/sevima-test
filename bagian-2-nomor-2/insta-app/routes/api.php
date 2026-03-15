@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CommentController;
+use App\Http\Controllers\LikeController;
 use App\Http\Controllers\PostController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -25,4 +26,7 @@ Route::middleware('auth:sanctum')->group(function() {
 
     // comments
     Route::apiResource('comments', CommentController::class)->except(['create', 'edit', 'show']);
+
+    // likes
+    Route::apiResource('likes', LikeController::class)->only(['index', 'store', 'destroy']);
 });
