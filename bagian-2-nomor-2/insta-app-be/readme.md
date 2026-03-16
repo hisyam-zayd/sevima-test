@@ -11,8 +11,8 @@
 ```bash
 composer install
 # install or enable php extension mentioned if below command is failed
-php artisan migrate
 cp .env.example .env
+php artisan migrate
 # generate APP_KEY inside .env
 php artisan key:generate
 ```
@@ -30,6 +30,9 @@ php artisan test
 
 ### Docker
 ```bash
+# don't forget to recreate database.sqlite for each build with php artisan migrate - in case of it already filled up with dev data
+rm -f database/database.sqlite
+php artisan migrate
 docker compose up --build -d
 ```
 
