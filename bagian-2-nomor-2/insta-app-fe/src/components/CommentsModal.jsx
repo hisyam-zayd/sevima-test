@@ -44,7 +44,9 @@ export default function CommentsModal({ post, onClose, onCommentsChange }) {
     if (!editContent.trim()) return
     try {
       const { data } = await api.put(`/comments/${commentId}`, { content: editContent })
-      setComments(comments.map(c => c.id === commentId ? { ...c, content: data.content } : c))
+      const updated = comments.map(c => c.id === commentId ? { ...c, content: data.content } : c)
+      setComments(updated)
+      onCommentsChange?.(updated)
       setEditingId(null)
     } catch {}
   }

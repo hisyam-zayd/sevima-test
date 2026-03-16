@@ -1,21 +1,21 @@
 # Insta App
 
-## Jalankan
+## How to run
 
 ```bash
-# Build dan jalankan BE + FE
+# Build dan run BE + FE
 docker compose up -d --build
 
-# Jalankan BE + FE, hanya build FE
+# Run BE + FE, only build FE
 docker compose up -d --build fe
 
-# Jalankan BE + FE, hanya build BE
+# Run BE + FE, only build BE
 docker compose up -d --build be
 
-# Jalankan FE saja
+# only FE
 docker compose up -d fe
 
-# Jalankan BE saja
+# only BE
 docker compose up -d be
 ```
 
