@@ -12,6 +12,7 @@
 composer install
 # install or enable php extension mentioned if below command is failed
 php artisan migrate
+cp .env.example .env
 # generate APP_KEY inside .env
 php artisan key:generate
 ```

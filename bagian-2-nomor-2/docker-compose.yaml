@@ -1,0 +1,21 @@
+services:
+  be:
+    container_name: insta-app-be
+    build: ./insta-app-be
+    image: insta-app-be:latest
+    expose:
+      - "8000"
+    volumes:
+      - ./insta-app-be:/var/www/html
+    env_file:
+      - ./insta-app-be/.env
+    working_dir: /var/www/html
+
+  fe:
+    container_name: insta-app-fe
+    build: ./insta-app-fe
+    image: insta-app-fe:latest
+    ports:
+      - "3000:80"
+    depends_on:
+      - be

@@ -58,7 +58,7 @@ export default function PostCard({ post, onUpdated, onDeleted }) {
 
   const commentsCount = post.comments?.length ?? 0
   const avatar = post.user?.name?.charAt(0).toUpperCase()
-  const imageUrl = post.image_path ? `http://localhost:8000/storage/${post.image_path}` : null
+  const imageUrl = post.image_path ? `/storage/${post.image_path}` : null
 
   const timeAgo = (dateStr) => {
     const diff = Date.now() - new Date(dateStr).getTime()
