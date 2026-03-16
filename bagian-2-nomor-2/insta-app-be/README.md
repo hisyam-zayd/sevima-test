@@ -7,19 +7,24 @@
 - Use build in SQLite
 - Docker supported
 
-### Unit testing
+### Installing
 ```bash
-php artisan test
+composer install
+# install or enable php extension mentioned if below command is failed
+php artisan migrate
+# generate APP_KEY inside .env
+php artisan key:generate
 ```
 
 ### Local dev
 ```bash
-cp .env.example .env
-# generate APP_KEY inside .env
-php artisan key:generate
-php artisan migrate:fresh
 php artisan serve --host=0.0.0.0 --port=8000
 ./local-test.sh
+```
+
+### Unit testing
+```bash
+php artisan test
 ```
 
 ### Docker
