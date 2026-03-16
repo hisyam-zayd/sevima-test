@@ -28,7 +28,9 @@ class PostTest extends TestCase
     {
         Storage::fake('public');
         $user = User::factory()->create();
-        $file = UploadedFile::fake()->image('test.jpg');
+
+        $gifContent = base64_decode('R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+        $file = UploadedFile::fake()->createWithContent('test.gif', $gifContent);
 
         $response = $this->actingAs($user)->postJson('/api/posts', [
             'content' => 'Tes post dengan gambar',

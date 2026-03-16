@@ -11,6 +11,7 @@ export default function Feed() {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState('')
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false)
 
   const fetchPosts = useCallback(async () => {
     try {
@@ -72,7 +73,7 @@ export default function Feed() {
               <span className="text-sm font-medium hidden sm:block">{user?.name}</span>
             </div>
             <button
-              onClick={handleLogout}
+              onClick={() => setShowLogoutConfirm(true)}
               className="text-sm text-gray-500 hover:text-gray-700 transition-colors"
               title="Keluar"
             >
@@ -115,6 +116,30 @@ export default function Feed() {
           ))
         )}
       </main>
+
+      {/* Logout confirmation modal */}
+      {showLogoutConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 px-4">
+          <div className="bg-white rounded-2xl shadow-xl w-full max-w-xs p-6 text-center">
+            <h3 className="font-semibold text-base mb-2">Keluar dari InstaApp?</h3>
+            <p className="text-sm text-gray-500 mb-6">Kamu harus login kembali untuk mengakses feed.</p>
+            <div className="flex gap-3">
+              <button
+                onClick={() => setShowLogoutConfirm(false)}
+                className="flex-1 py-2 rounded-xl border border-gray-200 text-sm font-medium hover:bg-gray-50 transition-colors"
+              >
+                Batal
+              </button>
+              <button
+                onClick={handleLogout}
+                className="flex-1 py-2 rounded-xl bg-red-500 hover:bg-red-600 text-white text-sm font-semibold transition-colors"
+              >
+                Keluar
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   )
 }

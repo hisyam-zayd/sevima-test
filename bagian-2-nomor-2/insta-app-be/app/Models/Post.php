@@ -14,7 +14,7 @@ class Post extends Model
     protected $fillable = [
         'user_id',
         'content',
-        'image',
+        'image_path',
     ];
 
     public function user(): BelongsTo

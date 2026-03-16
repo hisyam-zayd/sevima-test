@@ -2,7 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import api from '../api'
 import { useAuth } from '../context/AuthContext'
 
-export default function CommentsModal({ post, onClose }) {
+export default function CommentsModal({ post, onClose, onCommentsChange }) {
   const { user } = useAuth()
   const [comments, setComments] = useState([])
   const [content, setContent] = useState('')
@@ -27,7 +27,9 @@ export default function CommentsModal({ post, onClose }) {
     setLoading(true)
     try {
       const { data } = await api.post('/comments', { post_id: post.id, content })
-      setComments([{ ...data, user }, ...comments])
+      const updated = [{ ...data, user }, ...comments]
+      setComments(updated)
+      onCommentsChange?.(updated)
       setContent('')
     } catch {}
     setLoading(false)
@@ -51,7 +53,9 @@ export default function CommentsModal({ post, onClose }) {
     if (!confirm('Hapus komentar ini?')) return
     try {
       await api.delete(`/comments/${commentId}`)
-      setComments(comments.filter(c => c.id !== commentId))
+      const updated = comments.filter(c => c.id !== commentId)
+      setComments(updated)
+      onCommentsChange?.(updated)
     } catch {}
   }
 

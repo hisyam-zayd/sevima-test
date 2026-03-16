@@ -46,7 +46,7 @@ export default function Register() {
 
         <div className="bg-white border border-gray-200 rounded-xl p-8 shadow-sm">
           <p className="text-center text-gray-500 text-sm font-semibold mb-4">
-            Daftar untuk melihat foto dari teman-temanmu.
+            Daftar untuk melihat foto dari teman-temanmu (kalau punya).
           </p>
           <form onSubmit={handleSubmit} className="space-y-3">
             <div>

@@ -12,7 +12,9 @@ export default function PostCard({ post, onUpdated, onDeleted }) {
     return post.likes?.find(l => l.user_id === user?.id)?.id ?? null
   })
   const [likesCount, setLikesCount] = useState(post.likes?.length ?? 0)
+  const [commentsCount, setCommentsCount] = useState(post.comments?.length ?? 0)
   const [showComments, setShowComments] = useState(false)
+  const [localComments, setLocalComments] = useState(post.comments || [])
   const [editing, setEditing] = useState(false)
   const [editContent, setEditContent] = useState(post.content)
   const [menuOpen, setMenuOpen] = useState(false)
@@ -56,7 +58,6 @@ export default function PostCard({ post, onUpdated, onDeleted }) {
     } catch {}
   }
 
-  const commentsCount = post.comments?.length ?? 0
   const avatar = post.user?.name?.charAt(0).toUpperCase()
   const imageUrl = post.image_path ? `/storage/${post.image_path}` : null
 
@@ -171,7 +172,7 @@ export default function PostCard({ post, onUpdated, onDeleted }) {
         </div>
 
         {/* Recent comment preview */}
-        {post.comments?.length > 0 && (
+        {localComments.length > 0 && (
           <div className="px-4 pb-3">
             <button
               onClick={() => setShowComments(true)}
@@ -181,8 +182,8 @@ export default function PostCard({ post, onUpdated, onDeleted }) {
             </button>
             <div className="mt-1">
               <p className="text-sm">
-                <span className="font-semibold mr-1">{post.comments[0]?.user?.name}</span>
-                <span className="text-gray-700">{post.comments[0]?.content}</span>
+                <span className="font-semibold mr-1">{localComments[0]?.user?.name}</span>
+                <span className="text-gray-700">{localComments[0]?.content}</span>
               </p>
             </div>
           </div>
@@ -193,6 +194,10 @@ export default function PostCard({ post, onUpdated, onDeleted }) {
         <CommentsModal
           post={post}
           onClose={() => setShowComments(false)}
+          onCommentsChange={(updated) => {
+            setLocalComments(updated)
+            setCommentsCount(updated.length)
+          }}
         />
       )}
     </>

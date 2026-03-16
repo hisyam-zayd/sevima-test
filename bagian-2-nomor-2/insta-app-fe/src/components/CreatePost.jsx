@@ -87,8 +87,7 @@ export default function CreatePost({ onPostCreated }) {
                 title="Upload foto"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3 3h18M3 3v18M3 3l18 18" />
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M4 16l4-4 4 4 4-5 4 5" />
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 013.182 0l5.159 5.159m-1.5-1.5l1.409-1.409a2.25 2.25 0 013.182 0l2.909 2.909M3.75 18h16.5a2.25 2.25 0 002.25-2.25V7.5a2.25 2.25 0 00-2.25-2.25H3.75A2.25 2.25 0 001.5 7.5v8.25A2.25 2.25 0 003.75 18z" />
                 </svg>
               </button>
               <input ref={fileRef} type="file" accept="image/*" className="hidden" onChange={handleImageChange} />

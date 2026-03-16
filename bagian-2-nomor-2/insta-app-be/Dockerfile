@@ -35,4 +35,4 @@ RUN chmod -R 775 storage bootstrap/cache
 EXPOSE 8000
 
 # temporary use dev, for easy deploy. for prd, don't use this approach. instead use php server like FrankenPHP
-CMD ["php", "artisan", "serve", "--host=0.0.0.0", "--port=8000"]
+CMD php artisan storage:link --force && php artisan serve --host=0.0.0.0 --port=8000
