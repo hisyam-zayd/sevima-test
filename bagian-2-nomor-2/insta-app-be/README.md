@@ -17,6 +17,7 @@ php artisan test
 cp .env.example .env
 # generate APP_KEY inside .env
 php artisan key:generate
+php artisan migrate:fresh
 php artisan serve --host=0.0.0.0 --port=8000
 ./local-test.sh
 ```
@@ -28,7 +29,7 @@ docker compose up --build -d
 
 ### Notes
 - see API spec on API_SPEC.md
-- database table already migrated. located at database/database.sqlite
+- to use Docker and with compose, don't forget to generate key (APP_KEY) and do database migration with `php artisan migrate`. compose file needs these two properties as app env.
 
 ## License
 
