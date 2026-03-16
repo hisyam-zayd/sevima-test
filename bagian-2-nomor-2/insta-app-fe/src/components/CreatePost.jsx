@@ -14,6 +14,12 @@ export default function CreatePost({ onPostCreated }) {
   const handleImageChange = (e) => {
     const file = e.target.files[0]
     if (!file) return
+    if (file.size > 2 * 1024 * 1024) {
+      setError('Ukuran gambar maksimal 2 MB.')
+      fileRef.current.value = ''
+      return
+    }
+    setError('')
     setImage(file)
     setPreview(URL.createObjectURL(file))
   }
